@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import data from './MovieData.json';
+import Navbar from './navbar';
 
 const MD = data.MovieData;
 
@@ -22,6 +23,7 @@ function MovieList() {
   return (
     <>
       <div>
+        <Navbar />
         <h3>Joel Hilton's Movie Collection</h3>
       </div>
       <div>
@@ -36,8 +38,8 @@ function MovieList() {
             </tr>
           </thead>
           <tbody>
-            {MD.map((m) => (
-              <tr>
+            {listOfMovies.map((m) => (
+              <tr key={m.Title}>
                 <td>{m.Title}</td>
                 <td>{m.Year}</td>
                 <td>{m.Director}</td>
@@ -49,7 +51,9 @@ function MovieList() {
         </table>
       </div>
 
-      <button className="btn btn-primary" onClick={addMovie}></button>
+      <button className="btn btn-primary" onClick={addMovie}>
+        Add Batman!
+      </button>
     </>
   );
 }
