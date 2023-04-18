@@ -31,18 +31,21 @@ function APIMovieList() {
           </tr>
         </thead>
         <tbody>
-          {movieData.map((m) => (
-            <tr key={m.movieId}>
-              <td>{m.title}</td>
-              <td>{m.category}</td>
-              <td>{m.year}</td>
-              <td>{m.director}</td>
-              <td>{m.rating}</td>
-              <td>{m.edited}</td>
-              <td>{m.lentTo}</td>
-              <td>{m.notes}</td>
-            </tr>
-          ))}
+          {movieData
+            .filter((m) => m.edited === 'Yes')
+            .sort((a, b) => (a.title < b.title ? -1 : 1))
+            .map((m) => (
+              <tr key={m.movieId}>
+                <td>{m.title}</td>
+                <td>{m.category}</td>
+                <td>{m.year}</td>
+                <td>{m.director}</td>
+                <td>{m.rating}</td>
+                <td>{m.edited}</td>
+                <td>{m.lentTo}</td>
+                <td>{m.notes}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </>
